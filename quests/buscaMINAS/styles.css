@@ -1,0 +1,469 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pacifico', cursive;
+}
+
+body {
+    background: linear-gradient(180deg, #ff7e5f, #feb47b); /* Colores cálidos para simular un atardecer */
+    background-attachment: fixed;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: auto;
+    position: relative;
+    animation: skyMovement 30s infinite alternate; /* Animación de cielo cambiando colores */
+}
+
+@keyframes skyMovement {
+    0% {
+        background: linear-gradient(180deg, #ff7e5f, #feb47b); /* Colores cálidos */
+    }
+    50% {
+        background: linear-gradient(180deg, #2c3e50, #4ca1af); /* Colores fríos para la noche */
+    }
+    100% {
+        background: linear-gradient(180deg, #ff7e5f, #feb47b); /* Colores cálidos de nuevo */
+    }
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 70%;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: url('https://www.transparenttextures.com/patterns/sandpaper.png'); /* Textura de arena */
+    background-color: #FFD700; /* Color arena */
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: -1;
+    animation: waveMovement 4s infinite linear; /* Animación de olas moviéndose */
+}
+
+@keyframes waveMovement {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 50% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 80%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: rgba(255, 255, 255, 0.3); /* Brillo en el mar */
+    animation: waveGlow 6s infinite ease-in-out;
+}
+
+@keyframes waveGlow {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+
+
+.container {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para que se vea el fondo playero */
+    border: 4px solid #FFD700; /* Borde color arena */
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 40px rgba(255, 165, 0, 0.3); /* Sombra cálida */
+    border-radius: 15px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-skin.png'); /* Textura de madera */
+    background-size: cover; /* Asegura que la textura se cubra completamente */
+}
+
+h1, h2 {
+    color: #2a003f;
+    text-shadow: 0 0 10px #ff7e5f; /* Sombra que resalta, como el color del atardecer */
+    margin-bottom: 20px;
+    font-family: 'Pacifico', cursive; /* Mantengo la fuente playera */
+}
+
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 20px 40px;
+    font-size: 18px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Degradado de colores cálidos, como el atardecer */
+    color: #ffffff;
+    border: 2px solid #FFD700; /* Borde color arena */
+    cursor: pointer;
+    margin: 15px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 2;
+    border-radius: 30px; /* Bordes redondeados como si fueran botones de playa */
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.5); /* Sombra cálida que recuerda a la luz del sol */
+    text-transform: uppercase; /* Poner los textos en mayúsculas para un toque divertido */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #FFD700, #ff7e5f); /* Invertir los colores para dar el efecto de "flotación" */
+    color: #2a003f;
+    box-shadow: 0 0 30px rgba(255, 165, 0, 1); /* Brillo más fuerte cuando el usuario pasa el ratón */
+    transform: translateY(-5px); /* Efecto flotante como si el botón se elevara sobre la arena */
+}
+
+button:active {
+    transform: translateY(2px); /* Efecto de "hundirse" al hacer clic */
+}
+
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#timer {
+    color: #ffffff;
+    font-size: 32px;
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.8); /* Sombra cálida, como si fuera el sol al atardecer */
+    padding: 15px 25px;
+    background: rgba(255, 165, 0, 0.7); /* Fondo cálido como el sol en la playa */
+    border: 3px solid #FFD700; /* Borde dorado, como la arena de la playa */
+    border-radius: 25px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3); /* Sombra cálida que resalta */
+    margin-top: 20px;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    animation: glow 1.5s infinite alternate; /* Efecto de resplandor suave */
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 165, 0, 1), 0 0 40px rgba(255, 165, 0, 0.5);
+    }
+}
+
+
+#game-message {
+    background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente que simula la arena */
+    color: #2a003f; /* Texto en color oscuro para resaltar sobre el fondo claro */
+    font-size: 20px;
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    padding: 20px;
+    border: 3px solid #FFD700; /* Borde dorado, como la arena de la playa */
+    border-radius: 15px; /* Bordes redondeados, como si fuera una nota playera */
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3); /* Sombra cálida que resalta */
+    margin: 20px auto;
+    max-width: 350px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    animation: floatMessage 3s ease-in-out infinite; /* Animación de flotación suave */
+}
+
+@keyframes floatMessage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Ajusta las columnas según tu preferencia */
+    gap: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo suave y playero */
+    border: 5px solid #FFD700; /* Borde dorado que simula la arena */
+    border-radius: 20px; /* Bordes redondeados para un look relajado */
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3); /* Sombra cálida */
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background: #FFD700; /* Color arena */
+    border: 2px solid #FF6347; /* Borde suave para simular madera */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px; /* Bordes redondeados para un look suave */
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); /* Sombra suave para dar profundidad */
+}
+
+.cell.revealed {
+    background: #2a003f; /* Fondo más oscuro para las celdas reveladas */
+    border-color: #FFD700; /* Borde dorado para destacar */
+    color: #FFD700; /* Color dorado para el texto */
+}
+
+.cell.mine {
+    background: #FF6347; /* Color de las minas, como el coral o una roca de playa */
+    color: white;
+    animation: explode 0.5s ease;
+}
+
+.cell.flag {
+    background: #228B22; /* Color verde como las plantas de la playa */
+    animation: pop 0.3s ease;
+}
+
+/* Animación para las minas */
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Animación para las banderas */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+#ranking {
+    margin-top: 20px;
+    color: #2a003f; /* Texto oscuro para contraste */
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo suave y playero */
+    border: 3px solid #FFD700; /* Borde dorado, simula la arena */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3); /* Sombra cálida */
+    max-width: 400px;
+    margin: 20px auto;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-skin.png'); /* Textura de madera */
+    background-size: cover; /* Asegura que la textura cubra todo el fondo */
+    animation: floatRanking 3s ease-in-out infinite; /* Animación de flotación suave */
+}
+
+@keyframes floatRanking {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#ranking h2 {
+    font-size: 30px;
+    color: #FFD700; /* Color dorado para el encabezado */
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.7); /* Resplandor cálido */
+}
+
+#ranking ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#ranking li {
+    background: rgba(255, 165, 0, 0.6); /* Fondo cálido que recuerda el sol en la playa */
+    border: 2px solid #FFD700; /* Borde dorado */
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 18px;
+    color: #2a003f; /* Color oscuro para los nombres */
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); /* Sombra cálida */
+    transition: background 0.3s ease;
+}
+
+#ranking li:hover {
+    background: rgba(255, 165, 0, 1); /* Fondo más brillante al pasar el mouse */
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 1); /* Resplandor más fuerte al pasar el mouse */
+}
+
+
+.player-ranking-info {
+    background: rgba(255, 255, 255, 0.8); /* Fondo suave y playero, como la arena */
+    color: #2a003f; /* Texto oscuro para mayor contraste */
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    font-size: 22px;
+    padding: 15px 25px;
+    border: 3px solid #FFD700; /* Borde dorado que recuerda a la arena */
+    border-radius: 20px; /* Bordes redondeados para un look relajado */
+    margin: 15px auto;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3); /* Sombra cálida y suave */
+    background-image: url('https://www.transparenttextures.com/patterns/wood-skin.png'); /* Textura de madera que recuerda a tablas de surf */
+    background-size: cover;
+    animation: floatInfo 3s ease-in-out infinite; /* Animación de flotación suave */
+}
+
+@keyframes floatInfo {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.player-ranking-info h3 {
+    font-size: 28px;
+    color: #FFD700; /* Título dorado como el sol en la playa */
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.7); /* Resplandor cálido como el sol */
+}
+
+.player-ranking-info p {
+    font-size: 18px;
+    color: #2a003f; /* Texto oscuro para mayor legibilidad */
+    margin: 5px 0;
+}
+
+.player-ranking-info .rank-info {
+    background: rgba(255, 165, 0, 0.6); /* Fondo cálido, como el sol en la playa */
+    border: 2px solid #FFD700; /* Borde dorado */
+    padding: 10px;
+    border-radius: 12px; /* Bordes redondeados */
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); /* Sombra cálida */
+}
+
+.player-ranking-info .rank-info:hover {
+    background: rgba(255, 165, 0, 1); /* Fondo más brillante al pasar el mouse */
+    color: #ffffff; /* Texto blanco al resaltar */
+    box-shadow: 0 0 15px rgba(255, 165, 0, 1); /* Resplandor más fuerte al pasar el mouse */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.8); /* Fondo suave como la arena */
+    border: 3px solid #FFD700; /* Borde dorado que simula la arena */
+    border-radius: 20px; /* Bordes redondeados para un look relajado */
+    margin: 20px 0;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 0 30px rgba(255, 165, 0, 0.3); /* Sombra cálida */
+    background-image: url('https://www.transparenttextures.com/patterns/wood-skin.png'); /* Textura de madera para dar sensación de tablas playeras */
+    background-size: cover;
+    animation: floatTable 3s ease-in-out infinite; /* Animación de flotación suave */
+}
+
+@keyframes floatTable {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    color: #2a003f; /* Texto oscuro para mayor contraste */
+    font-family: 'Pacifico', cursive; /* Fuente relajada y playera */
+    font-size: 18px;
+    border: 2px solid #FFD700; /* Bordes dorados para dar un toque playero */
+    border-radius: 10px; /* Bordes redondeados */
+    background: rgba(255, 255, 255, 0.6); /* Fondo suave similar a la arena */
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3); /* Sombra cálida para darle profundidad */
+}
+
+th {
+    background: rgba(255, 165, 0, 0.8); /* Fondo dorado para los encabezados de la tabla */
+    color: #ffffff; /* Texto blanco en los encabezados */
+    font-size: 20px;
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.7); /* Resplandor cálido en el encabezado */
+}
+
+td {
+    background: rgba(255, 255, 255, 0.8); /* Fondo suave para las celdas */
+    color: #2a003f; /* Texto oscuro para el contraste */
+    transition: background 0.3s ease, color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+td:hover {
+    background: rgba(255, 165, 0, 1); /* Fondo brillante al pasar el mouse */
+    color: #ffffff; /* Texto blanco cuando se resalta */
+    box-shadow: 0 0 15px rgba(255, 165, 0, 1); /* Resplandor más fuerte al pasar el mouse */
+}

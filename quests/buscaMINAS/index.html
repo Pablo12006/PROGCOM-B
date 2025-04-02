@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas Playero</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Menú de Inicio -->
+        <div id="start-menu" class="menu">
+            <h1>Buscaminas Playero</h1>
+            <button onclick="showGame()">Jugar</button>
+            <button onclick="showInstructions()">Instrucciones</button>
+            <button onclick="showDifficulty()">Dificultad</button>
+        </div>
+
+        <!-- Instrucciones -->
+        <div id="instructions" class="menu hidden">
+            <h2>Normas</h2>
+            <p>1. Haz clic izquierdo para revelar una celda.</p>
+            <p>2. Haz clic derecho para colocar una bandera (🚩) en una celda que creas que tiene una mina.</p>
+            <p>3. Evita las minas y revela todas las celdas seguras para ganar.</p>
+            <p>4. Usa el temporizador para mejorar tu récord.</p>
+            <button onclick="backToMenu()">Volver</button>
+        </div>
+
+        <!-- Selección de Dificultad -->
+        <div id="difficulty-menu" class="menu hidden">
+            <h2>Selecciona Dificultad</h2>
+            <button onclick="setDifficulty(8, 10)">Fácil (8x8, 10 minas)</button>
+            <button onclick="setDifficulty(10, 15)">Medio (10x10, 15 minas)</button>
+            <button onclick="setDifficulty(16, 40)">Difícil (16x16, 40 minas)</button>
+            <button onclick="setDifficulty(20, 80)">Extremo (20x20, 80 minas)</button>
+            <button onclick="backToMenu()">Volver</button>
+        </div>
+
+        <!-- Juego -->
+        <div id="game" class="hidden">
+            <h1>Buscaminas Playero</h1>
+            <div class="controls">
+                <button onclick="showDifficulty()">Cambiar Dificultad</button>
+                <button onclick="startGame()">Nuevo Juego</button>
+                <button onclick="backToMenu()">Volver al Menú</button>
+                <div id="timer">Tiempo: 0s</div>
+            </div>
+            <div id="game-message" class="game-message hidden"></div>
+            <div id="game-board"></div>
+            <div id="ranking">
+                <h2>Rango</h2>
+                <div id="player-ranking-info" class="player-ranking-info"></div> <!-- Nuevo elemento -->
+                <table>
+                    <thead>
+                        <tr><th>Nombre</th><th>Tiempo</th><th>Tablero</th></tr>
+                    </thead>
+                    <tbody id="ranking-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
